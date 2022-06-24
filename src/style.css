@@ -1,8 +1,14 @@
 *{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
-/* .image-to-display{
+img{
+    position: absolute;
     width: 1920px;
     height: 1080px;
-} */
+    z-index: -1;
+}
+.weather-image{
+    
+}
