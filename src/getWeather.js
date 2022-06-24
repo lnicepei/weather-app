@@ -12,7 +12,6 @@ async function getWeather() {
     const weatherData = await unfecthedWeatherData.json();
 
     createCurrentWeather(weatherData);
-    
   } catch (error) {
     console.log(error);
     alert("Please enter an existing city");
