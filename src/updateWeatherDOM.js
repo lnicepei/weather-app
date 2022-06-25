@@ -1,12 +1,19 @@
 function createCurrentWeather(weatherData) {
   let currentDegrees = "Farenheit";
-  const currentCityDiv = document.querySelector(".current-city");
-  const toggleButton = document.querySelector("#toggle-temp-btn");
-  const weatherImageDiv = document.querySelector(".weather-image");
+  const currentCityDiv = document.querySelector(".additional");
+  const weatherImageDiv = document.querySelector(".navbar");
 
   const weatherImage = document.createElement("img");
   weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  // weatherImageDiv.textContent = "";
   weatherImageDiv.appendChild(weatherImage);
+
+  const toggleButton = document.createElement("button");
+  toggleButton.classList.add("toggle-temp-btn");
+  toggleButton.textContent = "Toggle";
+  weatherImageDiv.appendChild(toggleButton);
+
+  // const currentCityName = document.
 
   currentCityDiv.textContent = `${
     Math.round(((weatherData.main.temp - 273.15) * (9 / 5) + 32) * 10) / 10
