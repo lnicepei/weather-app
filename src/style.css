@@ -3,12 +3,111 @@
     padding: 0;
     overflow: hidden;
 }
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
 img{
     position: absolute;
     width: 1920px;
     height: 1080px;
     z-index: -1;
 }
-.weather-image{
-    
+
+.weather{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* gap: 10px; */
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.56);
+    color: white;
+    /* opacity: 0.7; */
+    border-radius: 40px;
+}
+
+.main{
+    grid-column: 1 / 3;
+    grid-row: 0 / 1;
+    background: wheat;
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.today-data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.today-temperature{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.today-city{
+    width: 100px;
+    height: 100px;
+    background-color: black
+}
+
+.today-image{
+    background-color: pink;
+    width: 50%;
+}
+
+.search{
+    display: flex;
+    grid-column: 3 / 4;
+    grid-row: 0 / 1;
+    margin: 20px;
+    background-color: navajowhite;
+}
+
+.forecast{
+    background: white;
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.forecast-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: red;
+    width: calc(100% / 7);
+    height: 100%;
+}
+
+.forecast-image{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+}
+
+.forecast-temperature{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+}
+
+.forecast-date{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+}
+
+input:focus{
+    outline: none;
 }
