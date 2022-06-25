@@ -1,3 +1,9 @@
 import { getWeather } from "./getWeather";
 
-document.querySelector("#search").addEventListener("click", getWeather);
+document.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") getWeather();
+});
+
+// (function startingWeather() {
+//   getWeather();
+// })();
