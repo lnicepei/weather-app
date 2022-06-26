@@ -89,21 +89,21 @@ img{
     margin: 20px;
 }
 
-.additional__feels-like{
+.additional__its-now{
     width: 100%;
-    height: 33%;
+    height: 33.33%;
     background-color: red;
 }
 
 .additional__humidity{
     width: 100%;
-    height: 33%;
+    height: 33.33%;
     background-color: black;
 }
 
 .additional__wind-speed{
     width: 100%;
-    height: 33%;
+    height: 33.33%;
     background-color: blanchedalmond;
 }
 
@@ -117,11 +117,11 @@ img{
 }
 
 .search > p{
-    height: 33%;
+    height: 33.33%;
 }
 
 .search > input{
-    height: 33%;
+    height: 33.33%;
 }
 
 .toggle-temp{
@@ -139,7 +139,7 @@ img{
     flex-direction: row;
 }
 
-.forecast-day{
+.forecast__card{
     display: flex;
     flex-direction: column;
     align-items: center;
