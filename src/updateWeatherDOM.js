@@ -51,7 +51,7 @@ function updateTodayWeather(weatherData, currentDegrees) {
   todayDescription.textContent = `${weatherData.weather[0].description}`;
   todayCity.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
   todayHumitidy.textContent = `Humidity: ${weatherData.main.humidity}%`;
-  todayWindSpeed.textContent = `Wind speed: ${weatherData.wind.speed} m/s`;
+  todayWindSpeed.textContent = `Wind: ${weatherData.wind.speed} m/s`;
 
   todayTemperature.textContent = `${
     Math.round((weatherData.main.temp - 273.15) * 10) / 10
