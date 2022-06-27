@@ -164,7 +164,7 @@ input:focus{
         display: flex;
         flex-direction: column;
         /* height: 100vh; */
-        overflow: auto;
+        /* overflow: none; */
     }
 
     .today{
@@ -220,12 +220,12 @@ input:focus{
         gap: 20px;
     }
 
-    /* .forecast{
-        display: block;
-        
+    .forecast{
+        width: 250vw;
+        overflow-x: auto;
     }
     
     .forecast__card{
-        width: auto;
-    } */
+        width: 200px;
+    }
 }
