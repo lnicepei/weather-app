@@ -3,7 +3,7 @@ import { createCurrentWeather } from "./updateWeatherDOM";
 async function getWeather(city) {
   try {
     const unfecthedWeatherData = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9d2f4030cf37634f60b9012e5bd611be`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9d2f4030cf37634f60b9012e5bd611be`,
       { mode: "cors" }
     );
 
