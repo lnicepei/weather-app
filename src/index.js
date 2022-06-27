@@ -1,6 +1,6 @@
 import { getWeather } from "./getWeather";
 import css from "../src/style.css";
-import img from '../src/eberhard-grossgasteiger-P9J7aBf5vTk-unsplash.jpg';
+import img from './phil-botha-a0TJ3hy-UD8-unsplash.jpg';
 
 document.addEventListener("keypress", listenToDocument);
 
