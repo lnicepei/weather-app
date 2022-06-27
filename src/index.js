@@ -1,4 +1,5 @@
 import { getWeather } from "./getWeather";
+import css from "../src/style.css";
 
 document.addEventListener("keypress", listenToDocument);
 
