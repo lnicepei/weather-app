@@ -3,41 +3,39 @@ import { format } from "date-fns";
 function createCurrentWeather(weatherData, forecastData) {
   let currentDegrees = "°C";
 
-  const todayTemperature = document.querySelector(".today__temperature");
-  const todayCity = document.querySelector(".today__city");
-  const todayImage = document.querySelector(".today__image");
+  // const todayTemperature = document.querySelector(".today__temperature");
+  // const todayCity = document.querySelector(".today__city");
+  // const todayImage = document.querySelector(".today__image");
   const toggleButton = document.querySelector(".toggle-temp");
   const forecastDays = [...document.querySelectorAll(".forecast__card")];
-  const todayItsNow = document.querySelector(".additional__its-now");
-  const todayHumitidy = document.querySelector(".additional__humidity");
-  const todayWindSpeed = document.querySelector(".additional__wind-speed");
+  // const todayItsNow = document.querySelector(".additional__its-now");
+  // const todayHumitidy = document.querySelector(".additional__humidity");
+  // const todayWindSpeed = document.querySelector(".additional__wind-speed");
 
-  const weatherImage = document.createElement("img");
-  weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-  todayImage.textContent = "";
-  todayImage.appendChild(weatherImage);
+  removeWeatherClassName();
 
-  console.log(weatherData);
+  updateTodayWeather(weatherData, currentDegrees);
 
-  todayItsNow.textContent = `There is ${weatherData.weather[0].description} in ${weatherData.name}`;
-  todayCity.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
-  todayHumitidy.textContent = `Humidity: ${weatherData.main.humidity}%`;
-  todayWindSpeed.textContent = `Wind speed: ${weatherData.wind.speed} m/s`;
+  // const weatherImage = document.createElement("img");
+  // weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  // todayImage.textContent = "";
+  // todayImage.appendChild(weatherImage);
 
-  todayTemperature.textContent = `${
-    Math.round((weatherData.main.temp - 273.15) * 10) / 10
-  } ${currentDegrees}`;
-  todayTemperature.classList.add("Celsius");
+  // todayItsNow.textContent = `${weatherData.weather[0].description} now in ${weatherData.name}`;
+  // todayCity.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+  // todayHumitidy.textContent = `Humidity: ${weatherData.main.humidity}%`;
+  // todayWindSpeed.textContent = `Wind speed: ${weatherData.wind.speed} m/s`;
+
+  // todayTemperature.textContent = `${
+  //   Math.round((weatherData.main.temp - 273.15) * 10) / 10
+  // } ${currentDegrees}`;
+  // todayTemperature.classList.add("Celsius");
 
   toggleButton.textContent = "Display °F";
-  // toggleDegrees(currentDegrees, toggleButton);
 
-  toggleButton.addEventListener("click", () => {
-    toggleButton.textContent.includes("°C")
-      ? (toggleButton.textContent = "Display °F")
-      : (toggleButton.textContent = "Display °C");
-    toggleDegrees(currentDegrees, toggleButton);
-  });
+  toggleButton.addEventListener("click", toggleDegrees);
+  toggleButton.parameter1 = currentDegrees;
+  toggleButton.parameter2 = toggleButton;
 
   for (let day in forecastDays) {
     let forecastImage = document.createElement("img");
@@ -52,17 +50,43 @@ function createCurrentWeather(weatherData, forecastData) {
       new Date(forecastData.daily[day].dt * 1000),
       "dd.MM.y"
     );
-    console.log(forecastData.daily[day]);
   }
 }
 
-function toggleDegrees(currentDegrees) {
-  //Add classname to all the element that have this field, and then choose them with qs and
-  //change their value
+function updateTodayWeather(weatherData, currentDegrees) {
+  const todayTemperature = document.querySelector(".today__temperature");
+  const todayCity = document.querySelector(".today__city");
+  const todayImage = document.querySelector(".today__image");
+
+  const todayItsNow = document.querySelector(".additional__its-now");
+  const todayHumitidy = document.querySelector(".additional__humidity");
+  const todayWindSpeed = document.querySelector(".additional__wind-speed");
+
+  const weatherImage = document.createElement("img");
+  weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  todayImage.textContent = "";
+  todayImage.appendChild(weatherImage);
+
+  todayItsNow.textContent = `${weatherData.weather[0].description} now in ${weatherData.name}`;
+  todayCity.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+  todayHumitidy.textContent = `Humidity: ${weatherData.main.humidity}%`;
+  todayWindSpeed.textContent = `Wind speed: ${weatherData.wind.speed} m/s`;
+
+  todayTemperature.textContent = `${
+    Math.round((weatherData.main.temp - 273.15) * 10) / 10
+  } ${currentDegrees}`;
+  todayTemperature.classList.add("Celsius");
+}
+
+function toggleDegrees(e) {
+  let currentDegrees = e.currentTarget.parameter1;
+  const toggleButton = e.currentTarget.parameter2;
+
+  toggleButton.textContent.includes("°C")
+    ? (toggleButton.textContent = "Display °F")
+    : (toggleButton.textContent = "Display °C");
 
   const temperatureDivs = document.querySelectorAll(".temperature");
-
-  console.log(temperatureDivs);
 
   for (let div of temperatureDivs) {
     let thenum = div.textContent.replace(/[^\d.]/g, "");
@@ -77,6 +101,15 @@ function toggleDegrees(currentDegrees) {
       currentDegrees = "°F";
       div.textContent = `${Math.round((thenum * (9 / 5) + 32) * 10) / 10} ${currentDegrees}`;
     }
+  }
+}
+
+function removeWeatherClassName() {
+  const temperatureDivs = document.querySelectorAll(".temperature");
+
+  for (let div of temperatureDivs) {
+    div.classList.remove("Celsius");
+    div.classList.remove("Farenheit");
   }
 }
 
