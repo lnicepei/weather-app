@@ -44,7 +44,7 @@ function updateTodayWeather(weatherData, currentDegrees) {
   const todayWindSpeed = document.querySelector(".additional__wind-speed");
 
   const weatherImage = document.createElement("img");
-  weatherImage.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  weatherImage.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
   todayImage.textContent = "";
   todayImage.appendChild(weatherImage);
 
