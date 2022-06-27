@@ -22,6 +22,7 @@ const config = {
     compress: true,
     port: 9000,
     },
+    devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -55,5 +56,6 @@ module.exports = () => {
     } else {
         config.mode = 'development';
     }
+    
     return config;
 };
