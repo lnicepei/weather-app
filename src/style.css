@@ -21,7 +21,7 @@ img{
 }
 
 .weather{
-    top: 50px;
+    top: 25vh;
     height: 90vh;
     width: 80vw;
     position: absolute;
