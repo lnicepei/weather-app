@@ -1,11 +1,9 @@
 import { createCurrentWeather } from "./updateWeatherDOM";
 
-async function getWeather() {
-  const cityInput = document.querySelector("input");
-  if (!cityInput.value) cityInput.value = "London";
+async function getWeather(city) {
   try {
     const unfecthedWeatherData = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&APPID=9d2f4030cf37634f60b9012e5bd611be`,
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9d2f4030cf37634f60b9012e5bd611be`,
       { mode: "cors" }
     );
 
@@ -18,9 +16,7 @@ async function getWeather() {
 
     const forecastData = await unfetchedForecast.json();
 
-    Promise.all([forecastData, weatherData]).then(() => {
-      createCurrentWeather(weatherData, forecastData);
-    });
+    createCurrentWeather(weatherData, forecastData);
   } catch (error) {
     console.log(error);
     alert("Please enter an existing city");
