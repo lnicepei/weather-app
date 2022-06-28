@@ -159,6 +159,14 @@ input:focus{
     outline: none;
 }
 
+.loading-div{
+    display: none;
+    position: absolute;
+    top: 45%;
+    color: white;
+    font-size: 4rem;
+}
+
 @media only screen and (max-width: 600px) {
     .weather{
         display: flex;
