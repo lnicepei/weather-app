@@ -33,6 +33,10 @@ img{
     border-radius: 40px;
 }
 
+.weather-hidden{
+    display: none;
+}
+
 .today{
     grid-column: 1 / 3;
     grid-row: 0 / 1;
