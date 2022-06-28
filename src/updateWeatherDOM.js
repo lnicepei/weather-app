@@ -11,6 +11,7 @@ function createCurrentWeather(weatherData, forecastData) {
   updateTodayWeather(weatherData, currentDegrees);
 
   toggleButton.textContent = "Display °F";
+  document.querySelector(".search__input").value = "";
 
   toggleButton.addEventListener("click", toggleDegrees);
   toggleButton.parameter1 = currentDegrees;
@@ -21,7 +22,7 @@ function createCurrentWeather(weatherData, forecastData) {
     forecastDays[day].childNodes[1].textContent = "";
     forecastDays[day].childNodes[1].appendChild(forecastImage);
     forecastImage.src = `http://openweathermap.org/img/wn/${forecastData.daily[day].weather[0].icon}@2x.png`;
-    
+
     forecastDays[day].childNodes[3].textContent = `${
       Math.round(forecastData.daily[day].temp.max * 10) / 10
     } ${currentDegrees}`;
@@ -29,7 +30,7 @@ function createCurrentWeather(weatherData, forecastData) {
 
     forecastDays[day].childNodes[5].textContent = format(
       new Date(forecastData.daily[day].dt * 1000),
-      "dd.MM.y"
+      "EE, dd.MM"
     );
   }
 }
@@ -75,12 +76,16 @@ function toggleDegrees(e) {
       div.classList.remove("Farenheit");
       div.classList.add("Celsius");
       currentDegrees = "°C";
-      div.textContent = `${Math.round((temperatureClean - 32) * (5 / 9) * 10) / 10} ${currentDegrees}`;
+      div.textContent = `${
+        Math.round((temperatureClean - 32) * (5 / 9) * 10) / 10
+      } ${currentDegrees}`;
     } else if (div.classList.contains("Celsius")) {
       div.classList.remove("Celsius");
       div.classList.add("Farenheit");
       currentDegrees = "°F";
-      div.textContent = `${Math.round((temperatureClean * (9 / 5) + 32) * 10) / 10} ${currentDegrees}`;
+      div.textContent = `${
+        Math.round((temperatureClean * (9 / 5) + 32) * 10) / 10
+      } ${currentDegrees}`;
     }
   }
 }
@@ -94,4 +99,18 @@ function removeWeatherClassName() {
   }
 }
 
-export { createCurrentWeather };
+function loading() {
+  // const weatherDivs = document.querySelectorAll(
+  //   ".temperature, .additional__description, .additional__wind-speed, .additional__humidity"
+  // );
+  // weatherDivs.forEach((div) => (div.textContent = "Loading..."));
+  document.querySelector(".weather").style.display = "none";
+  document.querySelector(".loading-div").style.display = "block"
+}
+
+function unloading() {
+  document.querySelector(".weather").style.display = "grid";
+  document.querySelector(".loading-div").style.display = "none"
+}
+
+export { createCurrentWeather, loading, unloading };
