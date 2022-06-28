@@ -1,8 +1,8 @@
 import { createCurrentWeather, loading, unloading } from "./updateWeatherDOM";
 
 async function getWeather(city) {
-  loading();
   try {
+    loading();
 
     const unfecthedWeatherData = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9d2f4030cf37634f60b9012e5bd611be`,

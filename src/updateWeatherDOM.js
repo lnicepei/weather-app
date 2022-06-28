@@ -100,17 +100,13 @@ function removeWeatherClassName() {
 }
 
 function loading() {
-  // const weatherDivs = document.querySelectorAll(
-  //   ".temperature, .additional__description, .additional__wind-speed, .additional__humidity"
-  // );
-  // weatherDivs.forEach((div) => (div.textContent = "Loading..."));
-  document.querySelector(".weather").style.display = "none";
-  document.querySelector(".loading-div").style.display = "block"
+  document.querySelector(".weather").className = "weather-hidden";
+  document.querySelector(".loading-div").style.display = "block";
 }
 
 function unloading() {
-  document.querySelector(".weather").style.display = "grid";
-  document.querySelector(".loading-div").style.display = "none"
+  document.querySelector(".weather-hidden").className = "weather";
+  document.querySelector(".loading-div").style.display = "none";
 }
 
 export { createCurrentWeather, loading, unloading };
